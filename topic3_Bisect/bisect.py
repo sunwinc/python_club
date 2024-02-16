@@ -1,16 +1,23 @@
-x = 12345
-epsilon = 0.01
-numGuesses = 0
-low = 0.0
-high = x
-ans = (high + low)/2.0
-while abs(ans**2 - x) >= epsilon:
-    print('low = ' + str(low) + ' high = ' + str(high) + ' ans = ' + str(ans))
-    numGuesses += 1
-    if ans**2 < x:
-        low = ans
-    else:
-        high = ans
-    ans = (high + low)/2.0
-print('numGuesses = ' + str(numGuesses))
-print(str(ans) + ' is close to square root of ' + str(x))
+def li_search(li, num):
+    for i in range(0, len(li)):
+        if li[i] == num:
+            return i
+
+def bi_search(li, num):
+    low = 0
+    high = len(li) - 1
+    
+    while True:
+        m = (low + high)//2
+        if li[m] > num:
+            high = m - 1
+        elif li[m] < num:
+            low = m + 1
+        else:
+            return m 
+
+
+num_list = [2, 3, 4, 6, 7, 9, 10]
+num = 6
+
+print(bi_search(num_list, num))
